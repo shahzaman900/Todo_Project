@@ -1,3 +1,7 @@
 body {
-    background-color: bisque;
+  background-color: bisque;
+}
+
+li {
+  list-style: none;
 }
