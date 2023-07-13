@@ -128,13 +128,6 @@ npx stylelint "**/*.{css,scss}"
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-## 🎥 Live Demo <a name="live-demo"></a>
-
--   Live Demo: [@LiveDemo](https://sheezu900.github.io/Todo_Project/)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ## 🎥 Future Feature <a name="future feature"></a>
 
 -   In future we will Edit book feature.
