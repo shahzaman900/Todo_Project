@@ -26,14 +26,19 @@ const tasks = [
 document.addEventListener('DOMContentLoaded', () => {
   const taskList = document.getElementById('todo_list_section');
 
+  const input = document.createElement('input');
+  input.classList.add('input');
+  input.placeholder = 'Add to your list';
+  taskList.appendChild(input);
+
   function displayTaskList() {
     // Sort tasks based on index value
     tasks.sort((a, b) => a.index - b.index);
 
-    tasks.forEach((task) => {
-      const list = document.createElement('ul');
-      list.classList.add('list');
+    const list = document.createElement('ul');
+    list.classList.add('list');
 
+    tasks.forEach((task) => {
       const listItem = document.createElement('li');
       listItem.classList.add('list_item');
 
@@ -56,6 +61,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       taskList.appendChild(list);
     });
+
+    const button = document.createElement('button');
+    button.classList.add('btn');
+    button.textContent = 'Clear all complete';
+    taskList.appendChild(button);
   }
 
   displayTaskList();
