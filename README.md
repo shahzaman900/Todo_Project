@@ -170,7 +170,7 @@ Feel free to leave any suggestions at the [Issues page](https://github.com/sheez
 
 Give a ⭐️ if you like this project and how I managed to build it!
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top ">back to top</a>)</p>
 
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
