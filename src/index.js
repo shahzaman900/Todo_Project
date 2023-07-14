@@ -1,5 +1,5 @@
 import './style.css';
-
+// eslint-disable-next-line import/no-cycle
 import {
   createList, deleteList, updateList, updateDescription,
 } from './crud.js';

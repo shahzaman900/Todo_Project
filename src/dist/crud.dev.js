@@ -65,7 +65,6 @@ function deleteList(id) {
 
 
 function updateDescription(id) {
-  console.log(id);
   var updatedInput = document.getElementById('updatedinput');
   var description = document.getElementById('p');
   updatedInput.addEventListener('keypress', function (e) {

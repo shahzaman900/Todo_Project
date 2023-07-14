@@ -12,6 +12,7 @@ require("./style.css");
 
 var _crud = require("./crud.js");
 
+// eslint-disable-next-line import/no-cycle
 // eslint-disable-next-line import/no-mutable-exports
 var tasks = [];
 exports.tasks = tasks;

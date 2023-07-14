@@ -1,5 +1,7 @@
 // eslint-disable-next-line import/no-cycle
-import { tasks, displayTaskList, storeDateInLocalStorage, getDateFromLocalStorage } from './index.js';
+import {
+  tasks, displayTaskList, storeDateInLocalStorage, getDateFromLocalStorage,
+} from './index.js';
 
 function addTask(description) {
   const id = getDateFromLocalStorage().length;
@@ -28,7 +30,7 @@ export function createList() {
 function chnageIndex(array) {
   array.forEach((list, index) => {
     list.index = index + 1;
-   });
+  });
 }
 
 // delete list
@@ -42,7 +44,6 @@ export function deleteList(id) {
 // updateUIState
 
 export function updateDescription(id) {
-  console.log(id);
   const updatedInput = document.getElementById('updatedinput');
   const description = document.getElementById('p');
   updatedInput.addEventListener('keypress', (e) => {
