@@ -36,6 +36,8 @@ li {
     width: 100%;
     bottom: 0;
     border: 0;
+    left: 0;
+    cursor: pointer;
   }
 
   .list {

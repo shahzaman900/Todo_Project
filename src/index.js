@@ -1,72 +1,83 @@
 import './style.css';
+// eslint-disable-next-line import/no-cycle
+import {
+  createList, deleteList, updateList, updateDescription,
+} from './crud.js';
 
-const tasks = [
-  {
-    description: 'task 1',
-    complete: true,
-    index: 1,
-  },
-  {
-    description: 'task 2',
-    complete: true,
-    index: 2,
-  },
-  {
-    description: 'task 3',
-    complete: true,
-    index: 4,
-  },
-  {
-    description: 'task 4',
-    complete: true,
-    index: 3,
-  },
-];
+// eslint-disable-next-line import/no-mutable-exports
+export let tasks = [];
 
-document.addEventListener('DOMContentLoaded', () => {
-  const taskList = document.getElementById('todo_list_section');
+const taskList = document.getElementById('todo_list_section');
 
-  const input = document.createElement('input');
-  input.classList.add('input');
-  input.placeholder = 'Add to your list';
-  taskList.appendChild(input);
+const input = document.createElement('input');
+input.id = 'input';
+input.classList.add('input');
+input.placeholder = 'Add to your list';
+taskList.appendChild(input);
 
-  function displayTaskList() {
-    // Sort tasks based on index value
-    tasks.sort((a, b) => a.index - b.index);
+const list = document.createElement('ul');
+list.id = 'list';
+list.classList.add('list');
 
-    const list = document.createElement('ul');
-    list.classList.add('list');
+const button = document.createElement('button');
+button.classList.add('btn');
+button.textContent = 'Clear all complete';
+taskList.appendChild(button);
 
-    tasks.forEach((task) => {
-      const listItem = document.createElement('li');
-      listItem.classList.add('list_item');
+export function storeDateInLocalStorage(tasks) {
+  const storedList = JSON.stringify(tasks);
+  localStorage.setItem('books', storedList);
+}
 
-      const checkBox = document.createElement('span');
-      checkBox.classList.add('material-symbols-outlined');
-      checkBox.textContent = 'check_box_outline_blank';
+export function getDateFromLocalStorage() {
+  const storedList = localStorage.getItem('books');
+  tasks = storedList ? JSON.parse(storedList) : [];
+  return tasks;
+}
 
-      const description = document.createElement('p');
-      description.textContent = task.description;
+export function displayTaskList() {
+  getDateFromLocalStorage();
+  list.innerHTML = '';
+  // Sort tasks based on index value
+  tasks.sort((a, b) => a.index - b.index);
 
-      const moreVert = document.createElement('span');
-      moreVert.classList.add('material-symbols-outlined');
-      moreVert.textContent = 'more_vert';
+  tasks.forEach((task) => {
+    const listItem = document.createElement('li');
+    listItem.classList.add('list_item');
 
-      listItem.appendChild(checkBox);
-      listItem.appendChild(description);
-      listItem.appendChild(moreVert);
+    const checkBox = document.createElement('span');
+    checkBox.classList.add('material-symbols-outlined');
+    checkBox.textContent = 'check_box_outline_blank';
 
-      list.appendChild(listItem);
+    const description = document.createElement('p');
+    description.id = 'p';
+    description.textContent = task.description;
+    description.addEventListener('click', () => updateList(task.index));
 
-      taskList.appendChild(list);
-    });
+    const updatedinput = document.createElement('input');
+    updatedinput.id = 'updatedinput';
+    updatedinput.classList.add('updatedinput');
+    updatedinput.placeholder = task.description;
+    updatedinput.style.display = 'none';
+    updatedinput.style.padding = '0.5rem';
+    updatedinput.addEventListener('click', () => updateDescription(task.index));
 
-    const button = document.createElement('button');
-    button.classList.add('btn');
-    button.textContent = 'Clear all complete';
-    taskList.appendChild(button);
-  }
+    const Delete = document.createElement('span');
+    Delete.classList.add('material-symbols-outlined');
+    Delete.textContent = 'delete';
+    Delete.id = 'delete';
+    Delete.addEventListener('click', () => deleteList(task.index));
 
-  displayTaskList();
-});
+    listItem.appendChild(checkBox);
+    listItem.appendChild(description);
+    listItem.appendChild(updatedinput);
+    listItem.appendChild(Delete);
+
+    list.appendChild(listItem);
+
+    taskList.appendChild(list);
+  });
+}
+
+displayTaskList();
+createList();
