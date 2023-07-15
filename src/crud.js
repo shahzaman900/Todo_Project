@@ -27,7 +27,7 @@ export function createList() {
 }
 
 // chnageIndex
-function chnageIndex(array) {
+export function chnageIndex(array) {
   array.forEach((list, index) => {
     list.index = index + 1;
   });
@@ -42,8 +42,8 @@ export function deleteList(id) {
 }
 
 // updateUIState
-
-export function updateDescription(id) {
+export function updateDescription(e, id) {
+  e.target.style.display = 'flex';
   const updatedInput = document.getElementById('updatedinput');
   const description = document.getElementById('p');
   updatedInput.addEventListener('keypress', (e) => {
@@ -65,9 +65,8 @@ export function updateDescription(id) {
   });
 }
 
-export function updateList() {
+export function updateList(e) {
   const updatedInput = document.getElementById('updatedinput');
-  const description = document.getElementById('p');
+  e.target.style.display = 'none';
   updatedInput.style.display = 'flex';
-  description.style.display = 'none';
 }
